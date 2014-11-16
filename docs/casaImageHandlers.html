@@ -1,0 +1,600 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module casaImageHandlers</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>casaImageHandlers</strong></big></big> (version )</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/srv/cyberska/kenneth/sw/metaData/casaImageHandlers.py">/srv/cyberska/kenneth/sw/metaData/casaImageHandlers.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CyberSKA&nbsp;CASA&nbsp;Metadata&nbsp;Project<br>
+#<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;metaData.casaImageHandlers.py<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kenneth&nbsp;Anderson,&nbsp;2011-08<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ken.anderson@ubc.ca<br>
+#&nbsp;------------------------------------------------------------------------------</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="pyrap.images.coordinates.html">pyrap.images.coordinates</a><br>
+<a href="convert.mjdConversions.html">convert.mjdConversions</a><br>
+</td><td width="25%" valign=top><a href="string.html">string</a><br>
+<a href="time.html">time</a><br>
+</td><td width="25%" valign=top><a href="types.html">types</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="exceptions.html#AttributeError">exceptions.AttributeError</a>(<a href="exceptions.html#StandardError">exceptions.StandardError</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="casaImageHandlers.html#CasaImageValueError">CasaImageValueError</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="exceptions.html#TypeError">exceptions.TypeError</a>(<a href="exceptions.html#StandardError">exceptions.StandardError</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="casaImageHandlers.html#CasaImageTypeError">CasaImageTypeError</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="pyrap.images.image.html#image">pyrap.images.image.image</a>(<a href="pyrap.images._images.html#Image">pyrap.images._images.Image</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="casaImageHandlers.html#CasaImageHandlers">CasaImageHandlers</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="CasaImageHandlers">class <strong>CasaImageHandlers</strong></a>(<a href="pyrap.images.image.html#image">pyrap.images.image.image</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Class&nbsp;is&nbsp;subclassed&nbsp;off&nbsp;the&nbsp;pyrap.images.<a href="pyrap.images.image.html#image">image</a>&nbsp;class,&nbsp;which&nbsp;in&nbsp;turn<br>
+is&nbsp;subclassed&nbsp;from&nbsp;the&nbsp;Casacore&nbsp;Image&nbsp;class.&nbsp;Constructor&nbsp;opens&nbsp;a&nbsp;passed<br>
+CASA&nbsp;Image&nbsp;filename.<br>
+&nbsp;<br>
+The&nbsp;Casacore&nbsp;Image&nbsp;class&nbsp;defines&nbsp;a&nbsp;number&nbsp;of&nbsp;methods&nbsp;to&nbsp;extract&nbsp;metadata<br>
+from&nbsp;the&nbsp;passed&nbsp;<a href="pyrap.images.image.html#image">image</a>,&nbsp;and&nbsp;is&nbsp;not&nbsp;overridden&nbsp;here.<br>
+&nbsp;<br>
+Examples&nbsp;of&nbsp;such&nbsp;methods&nbsp;are&nbsp;<br>
+&nbsp;<br>
+<a href="#CasaImageHandlers-name">name</a>()&nbsp;-&nbsp;filename&nbsp;passed<br>
+<a href="#CasaImageHandlers-ndim">ndim</a>()&nbsp;-&nbsp;N&nbsp;dimensions&nbsp;of&nbsp;<a href="pyrap.images.image.html#image">image</a><br>
+<a href="#CasaImageHandlers-shape">shape</a>()-&nbsp;shape&nbsp;of&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;cube,&nbsp;pixels<br>
+<a href="#CasaImageHandlers-size">size</a>()&nbsp;-&nbsp;N_of&nbsp;pixels&nbsp;in&nbsp;<a href="pyrap.images.image.html#image">image</a>.<br>
+<a href="#CasaImageHandlers-unit">unit</a>()&nbsp;-&nbsp;units&nbsp;of&nbsp;<a href="pyrap.images.image.html#image">image</a>,&nbsp;eg.&nbsp;'Jy/beam'<br>
+&nbsp;<br>
+Some&nbsp;calls&nbsp;will&nbsp;still&nbsp;return&nbsp;data&nbsp;structures&nbsp;that&nbsp;will&nbsp;have&nbsp;to&nbsp;be&nbsp;further<br>
+parsed&nbsp;by&nbsp;this&nbsp;class.&nbsp;<br>
+&nbsp;<br>
+eg.,<br>
+&nbsp;<br>
+<a href="#CasaImageHandlers-imageinfo">imageinfo</a>()<br>
+&nbsp;<br>
+{'restoringbeam':&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'major':&nbsp;{'unit':&nbsp;'arcsec',&nbsp;'value':&nbsp;1.3832687139511108},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'positionangle':&nbsp;{'unit':&nbsp;'deg',&nbsp;'value':&nbsp;33.8624153137207},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'minor':&nbsp;{'unit':&nbsp;'arcsec',&nbsp;'value':&nbsp;1.2961828708648682}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;},<br>
+'objectname':&nbsp;'3C129',&nbsp;<br>
+'imagetype':&nbsp;'Intensity'<br>
+}<br>
+&nbsp;<br>
+which&nbsp;means&nbsp;'objectname'&nbsp;is&nbsp;available&nbsp;as<br>
+&nbsp;<br>
+<a href="#CasaImageHandlers-imageinfo">imageinfo</a>()['objectname']<br>
+&nbsp;<br>
+'3C129'<br>
+&nbsp;<br>
+Other&nbsp;methods&nbsp;will&nbsp;manifest&nbsp;from&nbsp;a&nbsp;call&nbsp;to&nbsp;receive&nbsp;the&nbsp;passed&nbsp;<a href="pyrap.images.image.html#image">image</a>'s&nbsp;<br>
+coordinate&nbsp;systems&nbsp;via<br>
+&nbsp;<br>
+<a href="#CasaImageHandlers-coordinates">coordinates</a>().get_telescope()<br>
+&nbsp;<br>
+which&nbsp;is&nbsp;more&nbsp;efficiently&nbsp;extracted&nbsp;from&nbsp;an&nbsp;instance&nbsp;of&nbsp;<a href="pyrap.images.image.html#image">image</a>.coordinates,<br>
+&nbsp;<br>
+i.e.<br>
+&nbsp;<br>
+pimCoords&nbsp;=&nbsp;<a href="#CasaImageHandlers-coordinates">coordinates</a>()<br>
+pimCoords.get_telescope()<br>
+&nbsp;<br>
+For&nbsp;more&nbsp;documentation&nbsp;on&nbsp;available&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;methods&nbsp;see,<br>
+&nbsp;<br>
+&lt;<a href="http://www.atnf.csiro.au/computing/software/casacore/pyrap/docs/pyrap_images.html">http://www.atnf.csiro.au/computing/software/casacore/pyrap/docs/pyrap_images.html</a>&gt;<br>
+&nbsp;<br>
+Still&nbsp;other&nbsp;metadata&nbsp;will&nbsp;need&nbsp;to&nbsp;be&nbsp;accessed&nbsp;directly&nbsp;from&nbsp;available&nbsp;data<br>
+structures&nbsp;but&nbsp;which&nbsp;do&nbsp;not&nbsp;have&nbsp;methods&nbsp;provided.&nbsp;Methods&nbsp;for&nbsp;those&nbsp;data<br>
+are&nbsp;provided&nbsp;as&nbsp;'meta-methods',&nbsp;such&nbsp;as&nbsp;'<a href="#CasaImageHandlers-buildPointing">buildPointing</a>()'&nbsp;will&nbsp;call&nbsp;these&nbsp;methods&nbsp;on&nbsp;the&nbsp;<br>
+instances,&nbsp;gather&nbsp;and&nbsp;package&nbsp;the&nbsp;data&nbsp;in&nbsp;an&nbsp;appropriate&nbsp;way.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="casaImageHandlers.html#CasaImageHandlers">CasaImageHandlers</a></dd>
+<dd><a href="pyrap.images.image.html#image">pyrap.images.image.image</a></dd>
+<dd><a href="pyrap.images._images.html#Image">pyrap.images._images.Image</a></dd>
+<dd>Boost.Python.instance</dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="CasaImageHandlers-buildBeamInfo"><strong>buildBeamInfo</strong></a>(self)</dt><dd><tt>Populate&nbsp;self.<strong>meta</strong>&nbsp;with&nbsp;the&nbsp;<a href="#CasaImageHandlers-imageinfo">imageinfo</a>()['restoringbeam']&nbsp;data,<br>
+if&nbsp;present.&nbsp;&nbsp;Pass&nbsp;if&nbsp;'restoringbeam'&nbsp;not&nbsp;found.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-buildCoords"><strong>buildCoords</strong></a>(self)</dt><dd><tt>Build&nbsp;the&nbsp;Coordinates&nbsp;information&nbsp;onto&nbsp;an&nbsp;instance&nbsp;meta<br>
+structure.&nbsp;Works&nbsp;from&nbsp;self.<strong>imAxes</strong>,&nbsp;which&nbsp;is&nbsp;type&nbsp;&lt;string&gt;.<br>
+Listified&nbsp;here.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-buildImAxes"><strong>buildImAxes</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;reasonable&nbsp;string&nbsp;for&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;axes&nbsp;set&nbsp;as&nbsp;returned&nbsp;by<br>
+coordinatesystem.get_axes()</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-buildPointing"><strong>buildPointing</strong></a>(self)</dt><dd><tt>Populate&nbsp;self.<strong>meta</strong>&nbsp;with&nbsp;pointing&nbsp;center&nbsp;information,<br>
+&nbsp;<br>
+POINTING,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RA&nbsp;&nbsp;&nbsp;&nbsp;Dec<br>
+&nbsp;<br>
+where&nbsp;RA&nbsp;is&nbsp;in&nbsp;HMS&nbsp;format,&nbsp;Declination&nbsp;is&nbsp;in&nbsp;decimal&nbsp;degrees.<br>
+&nbsp;<br>
+The&nbsp;'pointingcenter'&nbsp;value&nbsp;is&nbsp;return&nbsp;as&nbsp;a&nbsp;array&nbsp;of&nbsp;floats,<br>
+eg.,&nbsp;<br>
+&nbsp;<br>
+array([&nbsp;1.24585202,&nbsp;&nbsp;0.78404044])<br>
+&nbsp;<br>
+RA,&nbsp;Dec&nbsp;order&nbsp;(assumed).</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-extract"><strong>extract</strong></a>(self)</dt><dd><tt>Slurp&nbsp;the&nbsp;metadata&nbsp;from&nbsp;the&nbsp;passed&nbsp;table&nbsp;tool&nbsp;object.<br>
+These&nbsp;data&nbsp;are&nbsp;placed&nbsp;in&nbsp;the&nbsp;instance's&nbsp;meta&nbsp;tuple&nbsp;list.<br>
+An&nbsp;undefined&nbsp;column&nbsp;will&nbsp;raise&nbsp;a&nbsp;RuntimeError&nbsp;exception,<br>
+and&nbsp;will&nbsp;be&nbsp;marked&nbsp;at&nbsp;'Undefined.'<br>
+&nbsp;<br>
+N.B.&nbsp;:&nbsp;'START-OBS'&nbsp;and&nbsp;'END-OBS'&nbsp;are&nbsp;spoofed&nbsp;for&nbsp;database<br>
+=====&nbsp;&nbsp;&nbsp;query&nbsp;purposes.&nbsp;&nbsp;There&nbsp;are&nbsp;no&nbsp;such&nbsp;parameters&nbsp;in&nbsp;<br>
+Casa&nbsp;Images,&nbsp;nor&nbsp;any&nbsp;way&nbsp;to&nbsp;determine&nbsp;the&nbsp;start&nbsp;and&nbsp;end&nbsp;times<br>
+for&nbsp;these&nbsp;datasets&nbsp;within&nbsp;a&nbsp;Casa&nbsp;Image&nbsp;context.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-imStats"><strong>imStats</strong></a>(self)</dt><dd><tt>Build&nbsp;on&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;statistics.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-isoObsDate"><strong>isoObsDate</strong></a>(self)</dt><dd><tt>MJD&nbsp;of&nbsp;Unix&nbsp;epoch&nbsp;1970-01-01T00:00:00.0&nbsp;=&nbsp;40587.0<br>
+&nbsp;<br>
+In&nbsp;seconds,<br>
+&nbsp;<br>
+40587*86400&nbsp;=&nbsp;3506716800s<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;the&nbsp;epoch&nbsp;delta&nbsp;between&nbsp;MJD&nbsp;base&nbsp;and&nbsp;Unix&nbsp;time.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-mjdObsDate"><strong>mjdObsDate</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;readable&nbsp;MJD&nbsp;date&nbsp;from&nbsp;the&nbsp;get_obsdate()&nbsp;call.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-obsDate"><strong>obsDate</strong></a>(self)</dt><dd><tt>Return&nbsp;an&nbsp;ISO&nbsp;8601&nbsp;compliant&nbsp;Observation&nbsp;Date.<br>
+function&nbsp;caldate&nbsp;accepts&nbsp;&lt;int&gt;&nbsp;or&nbsp;&lt;float&gt;<br>
+&nbsp;<br>
+eg.,<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;mjdConversions.caldate(49558.320659722245)<br>
+'1994-07-25T07:41:45.0000019837'<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;mjdConversions.caldate(49558)<br>
+'1994-07-25T00:00:00.0'<br>
+&nbsp;<br>
+**********************&nbsp;Deprecated&nbsp;*****************<br>
+Use&nbsp;<a href="#CasaImageHandlers-isoObsDate">isoObsDate</a>()</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-par"><strong>par</strong></a>(self, mimeType)</dt><dd><tt>parse&nbsp;and&nbsp;render.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-parseImage"><strong>parseImage</strong></a>(self, mimeType)</dt><dd><tt>Parse&nbsp;and&nbsp;extract&nbsp;required&nbsp;metadata&nbsp;from&nbsp;a&nbsp;CASA&nbsp;Image,&nbsp;as<br>
+passed&nbsp;to&nbsp;the&nbsp;constructor.&nbsp;&nbsp;Caller&nbsp;passes&nbsp;the&nbsp;MIME&nbsp;Type,&nbsp;which<br>
+is&nbsp;determined&nbsp;prior&nbsp;to&nbsp;instantiating&nbsp;this&nbsp;class.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-render"><strong>render</strong></a>(self)</dt><dd><tt>Pretty&nbsp;print&nbsp;to&nbsp;stdout.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-writeHdr"><strong>writeHdr</strong></a>(self, inFileName)</dt><dd><tt>Write&nbsp;out&nbsp;the&nbsp;header&nbsp;data&nbsp;in&nbsp;self.<strong>meta</strong>&nbsp;as&nbsp;pretty&nbsp;print.<br>
+Filename&nbsp;is,<br>
+&lt;<a href="pyrap.images.image.html#image">image</a>&nbsp;name&gt;&nbsp;+&nbsp;'.hdr'<br>
+&nbsp;<br>
+The&nbsp;inFileName&nbsp;&lt;string&gt;&nbsp;is&nbsp;passed&nbsp;here&nbsp;to&nbsp;handle&nbsp;the<br>
+use&nbsp;case&nbsp;wherein&nbsp;an&nbsp;input&nbsp;tarfile&nbsp;name&nbsp;is&nbsp;not&nbsp;equal&nbsp;to&nbsp;the&nbsp;archived<br>
+root&nbsp;path&nbsp;name&nbsp;for&nbsp;a&nbsp;Measurement&nbsp;Set&nbsp;or&nbsp;Casa&nbsp;Image.<br>
+&nbsp;<br>
+CyberSKA&nbsp;management&nbsp;determined&nbsp;that&nbsp;the&nbsp;output&nbsp;header&nbsp;file&nbsp;should<br>
+be&nbsp;named&nbsp;as&nbsp;the&nbsp;input&nbsp;filename,&nbsp;and&nbsp;not&nbsp;the&nbsp;archived&nbsp;root&nbsp;name&nbsp;of&nbsp;the<br>
+tar&nbsp;archive.&nbsp;<br>
+--&nbsp;28.09.2011</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="pyrap.images.image.html#image">pyrap.images.image.image</a>:<br>
+<dl><dt><a name="CasaImageHandlers-__init__"><strong>__init__</strong></a>(self, imagename, axis<font color="#909090">=0</font>, maskname<font color="#909090">=''</font>, images<font color="#909090">=()</font>, values<font color="#909090">=None</font>, coordsys<font color="#909090">=None</font>, overwrite<font color="#909090">=True</font>, ashdf5<font color="#909090">=False</font>, mask<font color="#909090">=()</font>, shape<font color="#909090">=None</font>, tileshape<font color="#909090">=()</font>)</dt></dl>
+
+<dl><dt><a name="CasaImageHandlers-__len__"><strong>__len__</strong></a>(self)</dt><dd><tt>Get&nbsp;nr&nbsp;of&nbsp;pixels&nbsp;in&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-__str__"><strong>__str__</strong></a>(self)</dt><dd><tt>Get&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-coordinates"><strong>coordinates</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;:class:`coordinatesystem`&nbsp;of&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-datatype"><strong>datatype</strong></a>(self)</dt><dd><tt>Get&nbsp;data&nbsp;type&nbsp;of&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-get"><strong>get</strong></a>(self, blc<font color="#909090">=()</font>, trc<font color="#909090">=()</font>, inc<font color="#909090">=()</font>)</dt><dd><tt>Get&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;data&nbsp;and&nbsp;mask.<br>
+&nbsp;<br>
+Get&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;data&nbsp;and&nbsp;mask&nbsp;(see&nbsp;::func:`getdata`&nbsp;and&nbsp;:func:`getmask`)<br>
+as&nbsp;a&nbsp;numpy&nbsp;masked&nbsp;array.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-getdata"><strong>getdata</strong></a>(self, blc<font color="#909090">=()</font>, trc<font color="#909090">=()</font>, inc<font color="#909090">=()</font>)</dt><dd><tt>Get&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;data.<br>
+&nbsp;<br>
+Using&nbsp;the&nbsp;arguments&nbsp;blc&nbsp;(bottom&nbsp;left&nbsp;corner),&nbsp;trc&nbsp;(top&nbsp;right&nbsp;corner),<br>
+and&nbsp;inc&nbsp;(stride)&nbsp;it&nbsp;is&nbsp;possible&nbsp;to&nbsp;get&nbsp;a&nbsp;data&nbsp;slice.<br>
+&nbsp;<br>
+The&nbsp;data&nbsp;is&nbsp;returned&nbsp;as&nbsp;a&nbsp;numpy&nbsp;array.&nbsp;Its&nbsp;dimensionality&nbsp;is&nbsp;the&nbsp;same<br>
+as&nbsp;the&nbsp;dimensionality&nbsp;of&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>,&nbsp;even&nbsp;if&nbsp;an&nbsp;axis&nbsp;has&nbsp;length&nbsp;1.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-getmask"><strong>getmask</strong></a>(self, blc<font color="#909090">=()</font>, trc<font color="#909090">=()</font>, inc<font color="#909090">=()</font>)</dt><dd><tt>Get&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;mask.<br>
+&nbsp;<br>
+Using&nbsp;the&nbsp;arguments&nbsp;blc&nbsp;(bottom&nbsp;left&nbsp;corner),&nbsp;trc&nbsp;(top&nbsp;right&nbsp;corner),<br>
+and&nbsp;inc&nbsp;(stride)&nbsp;it&nbsp;is&nbsp;possible&nbsp;to&nbsp;get&nbsp;a&nbsp;mask&nbsp;slice.&nbsp;Not&nbsp;all&nbsp;axes<br>
+need&nbsp;to&nbsp;be&nbsp;specified.&nbsp;Missing&nbsp;values&nbsp;default&nbsp;to&nbsp;begin,&nbsp;end,&nbsp;and&nbsp;1.<br>
+&nbsp;<br>
+The&nbsp;mask&nbsp;is&nbsp;returned&nbsp;as&nbsp;a&nbsp;numpy&nbsp;array.&nbsp;Its&nbsp;dimensionality&nbsp;is&nbsp;the&nbsp;same<br>
+as&nbsp;the&nbsp;dimensionality&nbsp;of&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>,&nbsp;even&nbsp;if&nbsp;an&nbsp;axis&nbsp;has&nbsp;length&nbsp;1.<br>
+Note&nbsp;that&nbsp;the&nbsp;casacore&nbsp;images&nbsp;use&nbsp;the&nbsp;convention&nbsp;that&nbsp;a&nbsp;mask&nbsp;value<br>
+True&nbsp;means&nbsp;good&nbsp;and&nbsp;False&nbsp;means&nbsp;bad.&nbsp;However,&nbsp;numpy&nbsp;uses&nbsp;the&nbsp;opposite.<br>
+Therefore&nbsp;the&nbsp;mask&nbsp;will&nbsp;be&nbsp;negated,&nbsp;so&nbsp;it&nbsp;can&nbsp;be&nbsp;used&nbsp;directly&nbsp;in<br>
+numpy&nbsp;operations.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;has&nbsp;no&nbsp;mask,&nbsp;an&nbsp;array&nbsp;will&nbsp;be&nbsp;returned&nbsp;with&nbsp;all&nbsp;values<br>
+set&nbsp;to&nbsp;False.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-haslock"><strong>haslock</strong></a>(self, write<font color="#909090">=False</font>)</dt><dd><tt>Test&nbsp;if&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;holds&nbsp;a&nbsp;read&nbsp;or&nbsp;write&nbsp;lock.<br>
+&nbsp;<br>
+|&nbsp;See&nbsp;`func:`tables.table.haslock`&nbsp;for&nbsp;more&nbsp;information.<br>
+|&nbsp;Locks&nbsp;are&nbsp;only&nbsp;used&nbsp;for&nbsp;images&nbsp;in&nbsp;casacore&nbsp;format.&nbsp;For&nbsp;other&nbsp;formats<br>
+&nbsp;&nbsp;(un)locking&nbsp;is&nbsp;a&nbsp;no-op,&nbsp;so&nbsp;this&nbsp;method&nbsp;always&nbsp;returns&nbsp;True.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-history"><strong>history</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;processing&nbsp;history.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-imageinfo"><strong>imageinfo</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;standard&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;info.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-info"><strong>info</strong></a>(self)</dt><dd><tt>Get&nbsp;coordinates,&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;info,&nbsp;and&nbsp;unit".</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-ispersistent"><strong>ispersistent</strong></a>(self)</dt><dd><tt>Test&nbsp;if&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;is&nbsp;persistent,&nbsp;i.e.&nbsp;stored&nbsp;on&nbsp;disk.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-lock"><strong>lock</strong></a>(self, write<font color="#909090">=False</font>, nattempts<font color="#909090">=0</font>)</dt><dd><tt>Acquire&nbsp;a&nbsp;read&nbsp;or&nbsp;write&nbsp;lock&nbsp;on&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>.<br>
+&nbsp;<br>
+|&nbsp;See&nbsp;`func:`tables.table.haslock`&nbsp;for&nbsp;more&nbsp;information.<br>
+|&nbsp;Locks&nbsp;are&nbsp;only&nbsp;used&nbsp;for&nbsp;images&nbsp;in&nbsp;casacore&nbsp;format.&nbsp;For&nbsp;other&nbsp;formats<br>
+&nbsp;&nbsp;(un)locking&nbsp;is&nbsp;a&nbsp;no-op,&nbsp;so&nbsp;this&nbsp;method&nbsp;always&nbsp;returns&nbsp;True.<br>
+&nbsp;<br>
+Only&nbsp;advanced&nbsp;users&nbsp;should&nbsp;use&nbsp;locking.&nbsp;In&nbsp;normal&nbsp;operations<br>
+explicit&nbsp;locking&nbsp;and&nbsp;unlocking&nbsp;is&nbsp;not&nbsp;necessary.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-miscinfo"><strong>miscinfo</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;auxiliary&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;info.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-name"><strong>name</strong></a>(self, strippath<font color="#909090">=False</font>)</dt><dd><tt>Get&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-ndim"><strong>ndim</strong></a>(self)</dt><dd><tt>Get&nbsp;dimensionality&nbsp;of&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-put"><strong>put</strong></a>(self, value, blc<font color="#909090">=()</font>, trc<font color="#909090">=()</font>, inc<font color="#909090">=()</font>)</dt><dd><tt>Put&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;data&nbsp;and&nbsp;mask.<br>
+&nbsp;<br>
+Put&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;data&nbsp;and&nbsp;optionally&nbsp;the&nbsp;mask&nbsp;(see&nbsp;::func:`getdata`<br>
+and&nbsp;:func:`getmask`).<br>
+If&nbsp;the&nbsp;`value`&nbsp;argument&nbsp;is&nbsp;a&nbsp;numpy&nbsp;masked&nbsp;array,&nbsp;but&nbsp;data&nbsp;and&nbsp;mask&nbsp;will<br>
+bw&nbsp;written.&nbsp;If&nbsp;it&nbsp;is&nbsp;a&nbsp;normal&nbsp;numpy&nbsp;array,&nbsp;only&nbsp;the&nbsp;data&nbsp;will&nbsp;be<br>
+written.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-putdata"><strong>putdata</strong></a>(self, value, blc<font color="#909090">=()</font>, trc<font color="#909090">=()</font>, inc<font color="#909090">=()</font>)</dt><dd><tt>Put&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;data.<br>
+&nbsp;<br>
+Using&nbsp;the&nbsp;arguments&nbsp;blc&nbsp;(bottom&nbsp;left&nbsp;corner),&nbsp;trc&nbsp;(top&nbsp;right&nbsp;corner),<br>
+and&nbsp;inc&nbsp;(stride)&nbsp;it&nbsp;is&nbsp;possible&nbsp;to&nbsp;put&nbsp;a&nbsp;data&nbsp;slice.&nbsp;Not&nbsp;all&nbsp;axes<br>
+need&nbsp;to&nbsp;be&nbsp;specified.&nbsp;Missing&nbsp;values&nbsp;default&nbsp;to&nbsp;begin,&nbsp;end,&nbsp;and&nbsp;1.<br>
+&nbsp;<br>
+The&nbsp;data&nbsp;should&nbsp;be&nbsp;a&nbsp;numpy&nbsp;array.&nbsp;Its&nbsp;dimensionality&nbsp;must&nbsp;be&nbsp;the&nbsp;same<br>
+as&nbsp;the&nbsp;dimensionality&nbsp;of&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-putmask"><strong>putmask</strong></a>(self, value, blc<font color="#909090">=()</font>, trc<font color="#909090">=()</font>, inc<font color="#909090">=()</font>)</dt><dd><tt>Put&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;mask.<br>
+&nbsp;<br>
+Using&nbsp;the&nbsp;arguments&nbsp;blc&nbsp;(bottom&nbsp;left&nbsp;corner),&nbsp;trc&nbsp;(top&nbsp;right&nbsp;corner),<br>
+and&nbsp;inc&nbsp;(stride)&nbsp;it&nbsp;is&nbsp;possible&nbsp;to&nbsp;put&nbsp;a&nbsp;data&nbsp;slice.&nbsp;Not&nbsp;all&nbsp;axes<br>
+need&nbsp;to&nbsp;be&nbsp;specified.&nbsp;Missing&nbsp;values&nbsp;default&nbsp;to&nbsp;begin,&nbsp;end,&nbsp;and&nbsp;1.<br>
+&nbsp;<br>
+The&nbsp;data&nbsp;should&nbsp;be&nbsp;a&nbsp;numpy&nbsp;array.&nbsp;Its&nbsp;dimensionality&nbsp;must&nbsp;be&nbsp;the&nbsp;same<br>
+as&nbsp;the&nbsp;dimensionality&nbsp;of&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>.<br>
+Note&nbsp;that&nbsp;the&nbsp;casacore&nbsp;images&nbsp;use&nbsp;the&nbsp;convention&nbsp;that&nbsp;a&nbsp;mask&nbsp;value<br>
+True&nbsp;means&nbsp;good&nbsp;and&nbsp;False&nbsp;means&nbsp;bad.&nbsp;However,&nbsp;numpy&nbsp;uses&nbsp;the&nbsp;opposite.<br>
+Therefore&nbsp;the&nbsp;mask&nbsp;will&nbsp;be&nbsp;negated,&nbsp;so&nbsp;a&nbsp;numoy&nbsp;masked&nbsp;can&nbsp;be&nbsp;given<br>
+directly.<br>
+&nbsp;<br>
+The&nbsp;mask&nbsp;is&nbsp;not&nbsp;written&nbsp;if&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;has&nbsp;no&nbsp;mask&nbsp;and&nbsp;if&nbsp;it&nbsp;the&nbsp;entire<br>
+mask&nbsp;is&nbsp;False.&nbsp;In&nbsp;that&nbsp;case&nbsp;the&nbsp;mask&nbsp;most&nbsp;likely&nbsp;comes&nbsp;from&nbsp;a&nbsp;getmask<br>
+operation&nbsp;on&nbsp;an&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;without&nbsp;a&nbsp;mask.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-regrid"><strong>regrid</strong></a>(self, axes, coordsys, outname<font color="#909090">=''</font>, overwrite<font color="#909090">=True</font>, outshape<font color="#909090">=()</font>, interpolation<font color="#909090">='linear'</font>, decimate<font color="#909090">=10</font>, replicate<font color="#909090">=False</font>, refchange<font color="#909090">=True</font>, forceregrid<font color="#909090">=False</font>)</dt><dd><tt>Regrid&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;to&nbsp;a&nbsp;new&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;object.<br>
+&nbsp;<br>
+Regrid&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;on&nbsp;the&nbsp;given&nbsp;axes&nbsp;to&nbsp;the&nbsp;given&nbsp;coordinate&nbsp;system.<br>
+The&nbsp;output&nbsp;is&nbsp;stored&nbsp;in&nbsp;the&nbsp;given&nbsp;file;&nbsp;it&nbsp;no&nbsp;file&nbsp;name&nbsp;is&nbsp;given&nbsp;a<br>
+temporary&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;is&nbsp;made.<br>
+If&nbsp;the&nbsp;output&nbsp;shape&nbsp;is&nbsp;empty,&nbsp;the&nbsp;old&nbsp;shape&nbsp;is&nbsp;used.<br>
+`replicate=True`&nbsp;means&nbsp;replication&nbsp;rather&nbsp;than&nbsp;regridding.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-saveas"><strong>saveas</strong></a>(self, filename, overwrite<font color="#909090">=True</font>, hdf5<font color="#909090">=False</font>, copymask<font color="#909090">=True</font>, newmaskname<font color="#909090">=''</font>, newtileshape<font color="#909090">=()</font>)</dt><dd><tt>Write&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;to&nbsp;disk.<br>
+&nbsp;<br>
+Note&nbsp;that&nbsp;the&nbsp;created&nbsp;disk&nbsp;file&nbsp;is&nbsp;a&nbsp;snapshot,&nbsp;so&nbsp;it&nbsp;is&nbsp;not&nbsp;updated<br>
+for&nbsp;possible&nbsp;later&nbsp;changes&nbsp;in&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;object.<br>
+&nbsp;<br>
+`overwrite`<br>
+&nbsp;&nbsp;If&nbsp;False,&nbsp;an&nbsp;exception&nbsp;is&nbsp;raised&nbsp;if&nbsp;the&nbsp;new&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;file&nbsp;already&nbsp;exists.<br>
+&nbsp;&nbsp;Default&nbsp;is&nbsp;True.<br>
+`ashdf5`<br>
+&nbsp;&nbsp;If&nbsp;True,&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;is&nbsp;created&nbsp;in&nbsp;HDF5&nbsp;format,&nbsp;otherwise&nbsp;in&nbsp;casacore<br>
+&nbsp;&nbsp;format.&nbsp;Default&nbsp;is&nbsp;casacore&nbsp;format.<br>
+`copymask`<br>
+&nbsp;&nbsp;By&nbsp;default&nbsp;the&nbsp;mask&nbsp;is&nbsp;written&nbsp;as&nbsp;well&nbsp;if&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;has&nbsp;a&nbsp;mask.<br>
+'newmaskname`<br>
+&nbsp;&nbsp;If&nbsp;the&nbsp;mask&nbsp;is&nbsp;written,&nbsp;the&nbsp;name&nbsp;is&nbsp;the&nbsp;same&nbsp;the&nbsp;original&nbsp;or<br>
+&nbsp;&nbsp;`mask0`&nbsp;if&nbsp;the&nbsp;original&nbsp;mask&nbsp;has&nbsp;no&nbsp;name.&nbsp;Using&nbsp;this&nbsp;argument&nbsp;a<br>
+&nbsp;&nbsp;different&nbsp;mask&nbsp;name&nbsp;can&nbsp;be&nbsp;given.<br>
+`tileshape`<br>
+&nbsp;&nbsp;Advanced&nbsp;users&nbsp;can&nbsp;give&nbsp;a&nbsp;new&nbsp;tile&nbsp;shape.&nbsp;See&nbsp;the&nbsp;:mod:`tables`<br>
+&nbsp;&nbsp;module&nbsp;for&nbsp;more&nbsp;information&nbsp;about&nbsp;Tiled&nbsp;Storage&nbsp;Managers.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-shape"><strong>shape</strong></a>(self)</dt><dd><tt>Get&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;shape.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-size"><strong>size</strong></a>(self)</dt><dd><tt>Get&nbsp;nr&nbsp;of&nbsp;pixels&nbsp;in&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-statistics"><strong>statistics</strong></a>(self, axes<font color="#909090">=()</font>, minmaxvalues<font color="#909090">=()</font>, exclude<font color="#909090">=False</font>, robust<font color="#909090">=True</font>)</dt><dd><tt>Calculate&nbsp;statistics&nbsp;for&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>.<br>
+&nbsp;<br>
+Statistics&nbsp;are&nbsp;returned&nbsp;in&nbsp;a&nbsp;dict&nbsp;for&nbsp;the&nbsp;given&nbsp;axes.<br>
+E.g.&nbsp;if&nbsp;axes&nbsp;[0,1]&nbsp;is&nbsp;given&nbsp;in&nbsp;a&nbsp;3-dim&nbsp;<a href="pyrap.images.image.html#image">image</a>,&nbsp;the&nbsp;statistics&nbsp;are<br>
+calculated&nbsp;for&nbsp;each&nbsp;plane&nbsp;along&nbsp;the&nbsp;3rd&nbsp;axis.&nbsp;By&nbsp;default&nbsp;statistics<br>
+are&nbsp;calculated&nbsp;for&nbsp;the&nbsp;entire&nbsp;<a href="pyrap.images.image.html#image">image</a>.<br>
+&nbsp;<br>
+`minmaxvalues`&nbsp;can&nbsp;be&nbsp;given&nbsp;to&nbsp;include&nbsp;or&nbsp;exclude&nbsp;pixels<br>
+with&nbsp;values&nbsp;in&nbsp;the&nbsp;given&nbsp;range.&nbsp;If&nbsp;only&nbsp;one&nbsp;value&nbsp;is&nbsp;given,<br>
+min=-abs(val)&nbsp;and&nbsp;max=abs(val).<br>
+&nbsp;<br>
+By&nbsp;default&nbsp;robust&nbsp;statistics&nbsp;(Median,&nbsp;MedAbsDevMed,&nbsp;and&nbsp;Quartile)&nbsp;are<br>
+calculated&nbsp;too.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-subimage"><strong>subimage</strong></a>(self, blc<font color="#909090">=()</font>, trc<font color="#909090">=()</font>, inc<font color="#909090">=()</font>, dropdegenerate<font color="#909090">=True</font>)</dt><dd><tt>Form&nbsp;a&nbsp;subimage.<br>
+&nbsp;<br>
+An&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;object&nbsp;containing&nbsp;a&nbsp;subset&nbsp;of&nbsp;an&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;is&nbsp;returned.<br>
+The&nbsp;arguments&nbsp;blc&nbsp;(bottom&nbsp;left&nbsp;corner),&nbsp;trc&nbsp;(top&nbsp;right&nbsp;corner),<br>
+and&nbsp;inc&nbsp;(stride)&nbsp;define&nbsp;the&nbsp;subset.&nbsp;Not&nbsp;all&nbsp;axes&nbsp;need&nbsp;to&nbsp;be&nbsp;specified.<br>
+Missing&nbsp;values&nbsp;default&nbsp;to&nbsp;begin,&nbsp;end,&nbsp;and&nbsp;1.<br>
+&nbsp;<br>
+By&nbsp;default&nbsp;axes&nbsp;with&nbsp;length&nbsp;1&nbsp;are&nbsp;left&nbsp;out.<br>
+&nbsp;<br>
+A&nbsp;subimage&nbsp;is&nbsp;a&nbsp;so-called&nbsp;virtual&nbsp;<a href="pyrap.images.image.html#image">image</a>.&nbsp;It&nbsp;is&nbsp;not&nbsp;stored,&nbsp;but&nbsp;only<br>
+references&nbsp;the&nbsp;original&nbsp;<a href="pyrap.images.image.html#image">image</a>.&nbsp;It&nbsp;can&nbsp;be&nbsp;made&nbsp;persistent&nbsp;using&nbsp;the<br>
+:func:`saveas`&nbsp;method.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-tofits"><strong>tofits</strong></a>(self, filename, overwrite<font color="#909090">=True</font>, velocity<font color="#909090">=True</font>, optical<font color="#909090">=True</font>, bitpix<font color="#909090">=-32</font>, minpix<font color="#909090">=1</font>, maxpix<font color="#909090">=-1</font>)</dt><dd><tt>Write&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;to&nbsp;a&nbsp;file&nbsp;in&nbsp;FITS&nbsp;format.<br>
+&nbsp;<br>
+`filename`<br>
+&nbsp;&nbsp;FITS&nbsp;file&nbsp;name<br>
+`overwrite`<br>
+&nbsp;&nbsp;If&nbsp;False,&nbsp;an&nbsp;exception&nbsp;is&nbsp;raised&nbsp;if&nbsp;the&nbsp;new&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;file&nbsp;already&nbsp;exists.<br>
+&nbsp;&nbsp;Default&nbsp;is&nbsp;True.<br>
+`velocity`<br>
+&nbsp;&nbsp;By&nbsp;default&nbsp;a&nbsp;velocity&nbsp;primary&nbsp;spectral&nbsp;axis&nbsp;is&nbsp;written&nbsp;if&nbsp;possible.<br>
+`optical`<br>
+&nbsp;&nbsp;If&nbsp;writing&nbsp;a&nbsp;velocity,&nbsp;use&nbsp;the&nbsp;optical&nbsp;definition<br>
+&nbsp;&nbsp;(otherwise&nbsp;use&nbsp;radio).<br>
+`bitpix`<br>
+&nbsp;&nbsp;can&nbsp;be&nbsp;set&nbsp;to&nbsp;-32&nbsp;(float)&nbsp;or&nbsp;16&nbsp;(short)&nbsp;only.&nbsp;When&nbsp;`bitpix`&nbsp;is<br>
+&nbsp;&nbsp;16&nbsp;it&nbsp;will&nbsp;write&nbsp;BSCALE&nbsp;and&nbsp;BZERO&nbsp;into&nbsp;the&nbsp;FITS&nbsp;file.&nbsp;If&nbsp;minPix<br>
+`minpix`&nbsp;and&nbsp;`maxpix`<br>
+&nbsp;&nbsp;are&nbsp;used&nbsp;to&nbsp;determine&nbsp;BSCALE&nbsp;and&nbsp;BZERO&nbsp;if&nbsp;`bitpix=16`.<br>
+&nbsp;&nbsp;If&nbsp;`minpix`&nbsp;is&nbsp;greater&nbsp;than&nbsp;`maxpix`&nbsp;(which&nbsp;is&nbsp;the&nbsp;default),<br>
+&nbsp;&nbsp;the&nbsp;minimum&nbsp;and&nbsp;maximum&nbsp;pixel&nbsp;values&nbsp;will&nbsp;be&nbsp;determined&nbsp;from&nbsp;the&nbsp;ddta.<br>
+&nbsp;&nbsp;Oherwise&nbsp;the&nbsp;supplied&nbsp;values&nbsp;will&nbsp;be&nbsp;used&nbsp;and&nbsp;pixels&nbsp;outside&nbsp;that<br>
+&nbsp;&nbsp;range&nbsp;will&nbsp;be&nbsp;clipped&nbsp;to&nbsp;the&nbsp;minimum&nbsp;and&nbsp;maximum&nbsp;pixel&nbsp;values.<br>
+&nbsp;&nbsp;Note&nbsp;that&nbsp;this&nbsp;truncation&nbsp;does&nbsp;not&nbsp;occur&nbsp;for&nbsp;`bitpix=-32`.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-unit"><strong>unit</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;pixel&nbsp;unit&nbsp;of&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-unlock"><strong>unlock</strong></a>(self)</dt><dd><tt>Release&nbsp;a&nbsp;lock&nbsp;on&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>.<br>
+&nbsp;<br>
+|&nbsp;See&nbsp;`func:`tables.table.haslock`&nbsp;for&nbsp;more&nbsp;information.<br>
+|&nbsp;Locks&nbsp;are&nbsp;only&nbsp;used&nbsp;for&nbsp;images&nbsp;in&nbsp;casacore&nbsp;format.&nbsp;For&nbsp;other&nbsp;formats<br>
+&nbsp;&nbsp;(un)locking&nbsp;is&nbsp;a&nbsp;no-op,&nbsp;so&nbsp;this&nbsp;method&nbsp;always&nbsp;returns&nbsp;True.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageHandlers-view"><strong>view</strong></a>(self, tempname<font color="#909090">='/tmp/tempimage'</font>)</dt><dd><tt>Display&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;using&nbsp;casaviewer.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;is&nbsp;not&nbsp;persistent,&nbsp;a&nbsp;copy&nbsp;will&nbsp;be&nbsp;made&nbsp;that&nbsp;the&nbsp;user<br>
+has&nbsp;to&nbsp;delete&nbsp;once&nbsp;viewing&nbsp;has&nbsp;finished.&nbsp;The&nbsp;name&nbsp;of&nbsp;the&nbsp;copy&nbsp;can&nbsp;be<br>
+given&nbsp;in&nbsp;argument&nbsp;`tempname`.&nbsp;Default&nbsp;is&nbsp;'/tmp/tempimage'.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="pyrap.images._images.html#Image">pyrap.images._images.Image</a>:<br>
+<dl><dt><a name="CasaImageHandlers-__reduce__"><strong>__reduce__</strong></a> = <unnamed Boost.Python function>(...)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="pyrap.images._images.html#Image">pyrap.images._images.Image</a>:<br>
+<dl><dt><strong>__instance_size__</strong> = 88</dl>
+
+<hr>
+Data descriptors inherited from Boost.Python.instance:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+</dl>
+<hr>
+Data and other attributes inherited from Boost.Python.instance:<br>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of Boost.Python.class object&gt;<dd><tt>T.<a href="#CasaImageHandlers-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="CasaImageTypeError">class <strong>CasaImageTypeError</strong></a>(<a href="exceptions.html#TypeError">exceptions.TypeError</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Used&nbsp;for&nbsp;type&nbsp;assertions&nbsp;on&nbsp;coordinate&nbsp;types,&nbsp;for&nbsp;the&nbsp;most&nbsp;part.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="casaImageHandlers.html#CasaImageTypeError">CasaImageTypeError</a></dd>
+<dd><a href="exceptions.html#TypeError">exceptions.TypeError</a></dd>
+<dd><a href="exceptions.html#StandardError">exceptions.StandardError</a></dd>
+<dd><a href="exceptions.html#Exception">exceptions.Exception</a></dd>
+<dd><a href="exceptions.html#BaseException">exceptions.BaseException</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="exceptions.html#TypeError">exceptions.TypeError</a>:<br>
+<dl><dt><a name="CasaImageTypeError-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>x.<a href="#CasaImageTypeError-__init__">__init__</a>(...)&nbsp;initializes&nbsp;x;&nbsp;see&nbsp;x.__class__.__doc__&nbsp;for&nbsp;signature</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="exceptions.html#TypeError">exceptions.TypeError</a>:<br>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object&gt;<dd><tt>T.<a href="#CasaImageTypeError-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+
+<hr>
+Methods inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><a name="CasaImageTypeError-__delattr__"><strong>__delattr__</strong></a>(...)</dt><dd><tt>x.<a href="#CasaImageTypeError-__delattr__">__delattr__</a>('name')&nbsp;&lt;==&gt;&nbsp;del&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="CasaImageTypeError-__getattribute__"><strong>__getattribute__</strong></a>(...)</dt><dd><tt>x.<a href="#CasaImageTypeError-__getattribute__">__getattribute__</a>('name')&nbsp;&lt;==&gt;&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="CasaImageTypeError-__getitem__"><strong>__getitem__</strong></a>(...)</dt><dd><tt>x.<a href="#CasaImageTypeError-__getitem__">__getitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="CasaImageTypeError-__getslice__"><strong>__getslice__</strong></a>(...)</dt><dd><tt>x.<a href="#CasaImageTypeError-__getslice__">__getslice__</a>(i,&nbsp;j)&nbsp;&lt;==&gt;&nbsp;x[i:j]<br>
+&nbsp;<br>
+Use&nbsp;of&nbsp;negative&nbsp;indices&nbsp;is&nbsp;not&nbsp;supported.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageTypeError-__reduce__"><strong>__reduce__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="CasaImageTypeError-__repr__"><strong>__repr__</strong></a>(...)</dt><dd><tt>x.<a href="#CasaImageTypeError-__repr__">__repr__</a>()&nbsp;&lt;==&gt;&nbsp;repr(x)</tt></dd></dl>
+
+<dl><dt><a name="CasaImageTypeError-__setattr__"><strong>__setattr__</strong></a>(...)</dt><dd><tt>x.<a href="#CasaImageTypeError-__setattr__">__setattr__</a>('name',&nbsp;value)&nbsp;&lt;==&gt;&nbsp;x.name&nbsp;=&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="CasaImageTypeError-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="CasaImageTypeError-__str__"><strong>__str__</strong></a>(...)</dt><dd><tt>x.<a href="#CasaImageTypeError-__str__">__str__</a>()&nbsp;&lt;==&gt;&nbsp;str(x)</tt></dd></dl>
+
+<dl><dt><a name="CasaImageTypeError-__unicode__"><strong>__unicode__</strong></a>(...)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+<dl><dt><strong>message</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="CasaImageValueError">class <strong>CasaImageValueError</strong></a>(<a href="exceptions.html#AttributeError">exceptions.AttributeError</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;casaImageValueError&nbsp;will&nbsp;be&nbsp;raised&nbsp;when&nbsp;a&nbsp;CASA&nbsp;Image&nbsp;file&nbsp;contains<br>
+an&nbsp;unknown&nbsp;element&nbsp;as&nbsp;presented&nbsp;by&nbsp;a&nbsp;call&nbsp;to&nbsp;keywordnames().&nbsp;&nbsp;A&nbsp;the&nbsp;top&nbsp;level,<br>
+CASA&nbsp;Images&nbsp;are&nbsp;presented&nbsp;as&nbsp;a&nbsp;list&nbsp;of&nbsp;string&nbsp;values,&nbsp;whose&nbsp;underlying&nbsp;contents<br>
+may&nbsp;be&nbsp;one&nbsp;of&nbsp;several&nbsp;types,&nbsp;either&nbsp;a&nbsp;table,&nbsp;or&nbsp;some&nbsp;other&nbsp;data&nbsp;structure,&nbsp;such<br>
+as&nbsp;a&nbsp;nested&nbsp;dictionary,&nbsp;or&nbsp;a&nbsp;simple&nbsp;string.&nbsp;&nbsp;To&nbsp;data,&nbsp;only&nbsp;the&nbsp;string&nbsp;values&nbsp;of&nbsp;<br>
+&nbsp;<br>
+'logtable',&nbsp;'coords',&nbsp;'imageinfo',&nbsp;'units'<br>
+&nbsp;<br>
+are&nbsp;known.<br>
+&nbsp;<br>
+Image&nbsp;list&nbsp;inclusions&nbsp;for&nbsp;<a href="pyrap.images.image.html#image">image</a>&nbsp;metadata,&nbsp;imageInclusions.listInclusions,<br>
+will&nbsp;only&nbsp;examine&nbsp;the&nbsp;expected&nbsp;keyword&nbsp;lists&nbsp;and&nbsp;strings,<br>
+&nbsp;<br>
+'coords',&nbsp;'imageinfo',&nbsp;'units'<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="casaImageHandlers.html#CasaImageValueError">CasaImageValueError</a></dd>
+<dd><a href="exceptions.html#AttributeError">exceptions.AttributeError</a></dd>
+<dd><a href="exceptions.html#StandardError">exceptions.StandardError</a></dd>
+<dd><a href="exceptions.html#Exception">exceptions.Exception</a></dd>
+<dd><a href="exceptions.html#BaseException">exceptions.BaseException</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="exceptions.html#AttributeError">exceptions.AttributeError</a>:<br>
+<dl><dt><a name="CasaImageValueError-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>x.<a href="#CasaImageValueError-__init__">__init__</a>(...)&nbsp;initializes&nbsp;x;&nbsp;see&nbsp;x.__class__.__doc__&nbsp;for&nbsp;signature</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="exceptions.html#AttributeError">exceptions.AttributeError</a>:<br>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object&gt;<dd><tt>T.<a href="#CasaImageValueError-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+
+<hr>
+Methods inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><a name="CasaImageValueError-__delattr__"><strong>__delattr__</strong></a>(...)</dt><dd><tt>x.<a href="#CasaImageValueError-__delattr__">__delattr__</a>('name')&nbsp;&lt;==&gt;&nbsp;del&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="CasaImageValueError-__getattribute__"><strong>__getattribute__</strong></a>(...)</dt><dd><tt>x.<a href="#CasaImageValueError-__getattribute__">__getattribute__</a>('name')&nbsp;&lt;==&gt;&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="CasaImageValueError-__getitem__"><strong>__getitem__</strong></a>(...)</dt><dd><tt>x.<a href="#CasaImageValueError-__getitem__">__getitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="CasaImageValueError-__getslice__"><strong>__getslice__</strong></a>(...)</dt><dd><tt>x.<a href="#CasaImageValueError-__getslice__">__getslice__</a>(i,&nbsp;j)&nbsp;&lt;==&gt;&nbsp;x[i:j]<br>
+&nbsp;<br>
+Use&nbsp;of&nbsp;negative&nbsp;indices&nbsp;is&nbsp;not&nbsp;supported.</tt></dd></dl>
+
+<dl><dt><a name="CasaImageValueError-__reduce__"><strong>__reduce__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="CasaImageValueError-__repr__"><strong>__repr__</strong></a>(...)</dt><dd><tt>x.<a href="#CasaImageValueError-__repr__">__repr__</a>()&nbsp;&lt;==&gt;&nbsp;repr(x)</tt></dd></dl>
+
+<dl><dt><a name="CasaImageValueError-__setattr__"><strong>__setattr__</strong></a>(...)</dt><dd><tt>x.<a href="#CasaImageValueError-__setattr__">__setattr__</a>('name',&nbsp;value)&nbsp;&lt;==&gt;&nbsp;x.name&nbsp;=&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="CasaImageValueError-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="CasaImageValueError-__str__"><strong>__str__</strong></a>(...)</dt><dd><tt>x.<a href="#CasaImageValueError-__str__">__str__</a>()&nbsp;&lt;==&gt;&nbsp;str(x)</tt></dd></dl>
+
+<dl><dt><a name="CasaImageValueError-__unicode__"><strong>__unicode__</strong></a>(...)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+<dl><dt><strong>message</strong></dt>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-degrees"><strong>degrees</strong></a>(...)</dt><dd><tt><a href="#-degrees">degrees</a>(x)<br>
+&nbsp;<br>
+Convert&nbsp;angle&nbsp;x&nbsp;from&nbsp;radians&nbsp;to&nbsp;degrees.</tt></dd></dl>
+ <dl><dt><a name="-radians"><strong>radians</strong></a>(...)</dt><dd><tt><a href="#-radians">radians</a>(x)<br>
+&nbsp;<br>
+Convert&nbsp;angle&nbsp;x&nbsp;from&nbsp;degrees&nbsp;to&nbsp;radians.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__author__</strong> = 'k.r. anderson, &lt;ken.anderson@ubc.ca&gt;'<br>
+<strong>__version__</strong> = ''<br>
+<strong>__version_date__</strong> = ''<br>
+<strong>pkg_name</strong> = 'metaData'<br>
+<strong>statInclusions</strong> = ['median', 'sigma', 'mean', 'rms', 'sum', 'min', 'max', 'minpos', 'maxpos']<br>
+<strong>version</strong> = '0.3.0'</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#7799ee">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Author</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#7799ee"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">k.r.&nbsp;anderson,&nbsp;&lt;ken.anderson@ubc.ca&gt;</td></tr></table>
+</body></html>

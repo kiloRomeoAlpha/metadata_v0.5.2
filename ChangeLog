@@ -1,0 +1,14 @@
+2012-12-12  Ken Anderson  <kenwood@>
+
+	* metaData v0.5.2 introduces updates as follows:
+
+	* writeHdr() methods of *Handlers classes updated to return only
+	file name of the written header file.
+
+	* extract.run() function  updated to handle the adjusted return
+	values of [Fits CasaImage MS]Handlers.writeHdr() methods.
+
+2012-12-10  Ken Anderson  <kenwood@>
+
+	* metaData v0.5.1 updates the imports for generic python paths.
+

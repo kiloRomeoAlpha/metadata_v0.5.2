@@ -1,0 +1,253 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module msHandlers</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>msHandlers</strong></big></big> (version )</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/srv/cyberska/kenneth/sw/metaData/msHandlers.py">/srv/cyberska/kenneth/sw/metaData/msHandlers.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CyberSKA&nbsp;CASA&nbsp;Metadata&nbsp;Project<br>
+#<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;metaData.msHandlers.py<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kenneth&nbsp;Anderson,&nbsp;2011-08<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ken.anderson@ubc.ca<br>
+#&nbsp;------------------------------------------------------------------------------</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="time.html">time</a><br>
+</td><td width="25%" valign=top><a href="types.html">types</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="msHandlers.html#MSHandlers">MSHandlers</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="exceptions.html#AttributeError">exceptions.AttributeError</a>(<a href="exceptions.html#StandardError">exceptions.StandardError</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="msHandlers.html#MSTableValueError">MSTableValueError</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MSHandlers">class <strong>MSHandlers</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Class&nbsp;defines&nbsp;CASA&nbsp;Measurement&nbsp;Set&nbsp;(MS)&nbsp;metadata&nbsp;handlers.<br>
+Constructor&nbsp;opens&nbsp;a&nbsp;passed&nbsp;Measurement&nbsp;Set&nbsp;name.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="MSHandlers-__init__"><strong>__init__</strong></a>(self, msFile)</dt><dd><tt>Open&nbsp;the&nbsp;Measurement&nbsp;Set&nbsp;file.&nbsp;Caller&nbsp;receives&nbsp;an&nbsp;MSHandler&nbsp;<br>
+<a href="__builtin__.html#object">object</a>&nbsp;with&nbsp;four&nbsp;(4)&nbsp;attributes:&nbsp;the&nbsp;passed&nbsp;filename,&nbsp;a&nbsp;casacore&nbsp;table<br>
+tool&nbsp;for&nbsp;the&nbsp;passed&nbsp;CASA&nbsp;measurement&nbsp;set,&nbsp;and&nbsp;unpopulated&nbsp;data<br>
+structures,&nbsp;&nbsp;"meta"&nbsp;of&nbsp;type&nbsp;&lt;list&gt;&nbsp;and&nbsp;"metaDict"&nbsp;of&nbsp;type&nbsp;&lt;dict&gt;<br>
+&nbsp;<br>
+***&nbsp;This&nbsp;constructor&nbsp;fiddles&nbsp;with&nbsp;stdout&nbsp;to&nbsp;suppress<br>
+pyrap.tables.table&nbsp;stdout&nbsp;output,&nbsp;which&nbsp;is&nbsp;not&nbsp;desired&nbsp;as&nbsp;part&nbsp;of<br>
+stdout&nbsp;output&nbsp;from&nbsp;this&nbsp;module.&nbsp;***<br>
+&nbsp;<br>
+self.<strong>meta</strong>&nbsp;will&nbsp;be&nbsp;a&nbsp;list&nbsp;of&nbsp;tuples,&nbsp;wherein&nbsp;ordered&nbsp;keys&nbsp;and&nbsp;values<br>
+are&nbsp;maintained.<br>
+&nbsp;<br>
+eg.,&nbsp;<br>
+&nbsp;<br>
+[<br>
+('OBSERVER','Some&nbsp;Blasted&nbsp;Astronomer'),<br>
+('TELESCOPE',&nbsp;'WSRT'),<br>
+('PROJECT',&nbsp;''&nbsp;)<br>
+('RELEASE_DATE',&nbsp;'Jan&nbsp;01,&nbsp;2011'),<br>
+&nbsp;...<br>
+]</tt></dd></dl>
+
+<dl><dt><a name="MSHandlers-buildFlatMeta"><strong>buildFlatMeta</strong></a>(self)</dt><dd><tt>Build&nbsp;an&nbsp;ordered&nbsp;list&nbsp;of&nbsp;tuples,&nbsp;the&nbsp;"meta"&nbsp;data&nbsp;structure,<br>
+for&nbsp;key-val&nbsp;flat&nbsp;files&nbsp;from&nbsp;the&nbsp;extracted&nbsp;metadata&nbsp;in&nbsp;self.<strong>metaDict</strong></tt></dd></dl>
+
+<dl><dt><a name="MSHandlers-msTableKeywords"><strong>msTableKeywords</strong></a>(tableObj)</dt></dl>
+
+<dl><dt><a name="MSHandlers-msTopLevelKeywords"><strong>msTopLevelKeywords</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;list&nbsp;of&nbsp;top&nbsp;level&nbsp;keyword&nbsp;names&nbsp;as&nbsp;returned&nbsp;by&nbsp;a&nbsp;<br>
+table&nbsp;tool's&nbsp;keywordnames()&nbsp;method.&nbsp;&nbsp;At&nbsp;the&nbsp;top&nbsp;level,&nbsp;keywords<br>
+will&nbsp;be&nbsp;a&nbsp;mix&nbsp;of&nbsp;plain&nbsp;keywords,&nbsp;and&nbsp;table&nbsp;names.</tt></dd></dl>
+
+<dl><dt><a name="MSHandlers-openTopLevelTables"><strong>openTopLevelTables</strong></a>(self, tableNames)</dt><dd><tt>Open&nbsp;the&nbsp;MS&nbsp;tables&nbsp;iteratively,&nbsp;calling&nbsp;the&nbsp;.__extract&nbsp;method&nbsp;to<br>
+parse,&nbsp;sift,&nbsp;and&nbsp;extract&nbsp;equired&nbsp;metadata.</tt></dd></dl>
+
+<dl><dt><a name="MSHandlers-parseMS"><strong>parseMS</strong></a>(self, mimeType)</dt><dd><tt>Parse&nbsp;and&nbsp;extract&nbsp;all&nbsp;meta&nbsp;info&nbsp;from&nbsp;a&nbsp;Measurement&nbsp;Set.<br>
+A&nbsp;FloatType&nbsp;value&nbsp;will&nbsp;be&nbsp;the&nbsp;MS_VERSION,&nbsp;likely&nbsp;2.0.<br>
+Only&nbsp;one&nbsp;FloatType&nbsp;keyword&nbsp;value&nbsp;has&nbsp;been&nbsp;observed&nbsp;to&nbsp;date,<br>
+04/08/2011.<br>
+&nbsp;<br>
+Passed&nbsp;mimeType&nbsp;is&nbsp;type&nbsp;&lt;string&gt;.&nbsp;Should&nbsp;be&nbsp;derived&nbsp;from<br>
+the&nbsp;MSMimeTyping&nbsp;class&nbsp;(msMimeTyping.py),&nbsp;and&nbsp;will&nbsp;have&nbsp;the<br>
+form,<br>
+&nbsp;<br>
+&nbsp;&nbsp;'image/ms-uvw'<br>
+&nbsp;<br>
+to&nbsp;indicate&nbsp;a&nbsp;Visibility&nbsp;(UV)&nbsp;Measurement&nbsp;Set.</tt></dd></dl>
+
+<dl><dt><a name="MSHandlers-render"><strong>render</strong></a>(self)</dt><dd><tt>Write&nbsp;the&nbsp;meta&nbsp;data&nbsp;structure&nbsp;to&nbsp;stdout.</tt></dd></dl>
+
+<dl><dt><a name="MSHandlers-writeHdr"><strong>writeHdr</strong></a>(self, inFileName)</dt><dd><tt>write&nbsp;out&nbsp;the&nbsp;header&nbsp;data&nbsp;in&nbsp;self.<strong>meta</strong>&nbsp;as&nbsp;pretty&nbsp;print&nbsp;to&nbsp;<br>
+a&nbsp;header&nbsp;file.<br>
+&nbsp;<br>
+The&nbsp;inFileName&nbsp;&lt;string&gt;&nbsp;is&nbsp;passed&nbsp;to&nbsp;handle&nbsp;the&nbsp;use&nbsp;case&nbsp;wherein<br>
+an&nbsp;input&nbsp;tarfile&nbsp;name&nbsp;is&nbsp;not&nbsp;equal&nbsp;to&nbsp;the&nbsp;archived&nbsp;root&nbsp;path&nbsp;name<br>
+for&nbsp;a&nbsp;Measurement&nbsp;Set&nbsp;or&nbsp;Casa&nbsp;Image.<br>
+&nbsp;<br>
+CyberSKA&nbsp;management&nbsp;determined&nbsp;that&nbsp;the&nbsp;output&nbsp;header&nbsp;file&nbsp;should<br>
+be&nbsp;named&nbsp;as&nbsp;the&nbsp;input&nbsp;filename,&nbsp;and&nbsp;not&nbsp;the&nbsp;archived&nbsp;root&nbsp;name&nbsp;of<br>
+the&nbsp;tar&nbsp;archive.&nbsp;<br>
+--&nbsp;28.09.2011</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MSTableValueError">class <strong>MSTableValueError</strong></a>(<a href="exceptions.html#AttributeError">exceptions.AttributeError</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>An&nbsp;<a href="#MSTableValueError">MSTableValueError</a>&nbsp;will&nbsp;be&nbsp;raised&nbsp;when&nbsp;a&nbsp;Measurement&nbsp;Set&nbsp;contains<br>
+an&nbsp;unknown&nbsp;element&nbsp;as&nbsp;presented&nbsp;by&nbsp;a&nbsp;call&nbsp;to&nbsp;keywordnames().&nbsp;&nbsp;Only<br>
+values&nbsp;of&nbsp;type,<br>
+&nbsp;<br>
+&lt;float&gt;<br>
+&lt;string&gt;<br>
+&lt;list&gt;<br>
+&nbsp;<br>
+are&nbsp;so&nbsp;far&nbsp;understood.<br>
+&nbsp;<br>
+eg.,&nbsp;top&nbsp;level&nbsp;keywords,&nbsp;values&nbsp;of&nbsp;some&nbsp;Measurement&nbsp;Set<br>
+&nbsp;<br>
+key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;val<br>
+----------------------------------------<br>
+'MS_VERSION'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.0<br>
+'ANTENNA'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Table:&nbsp;/...&nbsp;.MS/ANTENNA'<br>
+'DATA_DESCRIPTION'&nbsp;'Table:&nbsp;/...&nbsp;.MS/DATA_DESCRIPTION'<br>
+'FEED'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Table:&nbsp;/...&nbsp;.MS/FEED'<br>
+[...snip...]<br>
+'STATE'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Table:&nbsp;/...&nbsp;.MS/STATE'<br>
+'SOURCE'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Table:&nbsp;/...&nbsp;.MS/SOURCE'<br>
+'SORTED_TABLE'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Table:&nbsp;/...&nbsp;.MS/SORTED_TABLE'<br>
+['ARRAY_ID',&nbsp;'FIELD_ID',&nbsp;'DATA_DESC_ID',&nbsp;'TIME']<br>
+&nbsp;<br>
+where,<br>
+&nbsp;<br>
+type(key)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type(val)<br>
+-----------------------------<br>
+(&lt;type&nbsp;'str'&gt;,&nbsp;&lt;type&nbsp;'float'&gt;)<br>
+(&lt;type&nbsp;'str'&gt;,&nbsp;&lt;type&nbsp;'str'&gt;)<br>
+(&lt;type&nbsp;'str'&gt;,&nbsp;&lt;type&nbsp;'str'&gt;)<br>
+[...snip...]<br>
+(&lt;type&nbsp;'str'&gt;,&nbsp;&lt;type&nbsp;'str'&gt;)<br>
+(&lt;type&nbsp;'str'&gt;,&nbsp;&lt;type&nbsp;'str'&gt;)<br>
+(&lt;type&nbsp;'str'&gt;,&nbsp;&lt;type&nbsp;'str'&gt;)<br>
+(&lt;type&nbsp;'str'&gt;,&nbsp;&lt;type&nbsp;'list'&gt;)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="msHandlers.html#MSTableValueError">MSTableValueError</a></dd>
+<dd><a href="exceptions.html#AttributeError">exceptions.AttributeError</a></dd>
+<dd><a href="exceptions.html#StandardError">exceptions.StandardError</a></dd>
+<dd><a href="exceptions.html#Exception">exceptions.Exception</a></dd>
+<dd><a href="exceptions.html#BaseException">exceptions.BaseException</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="exceptions.html#AttributeError">exceptions.AttributeError</a>:<br>
+<dl><dt><a name="MSTableValueError-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>x.<a href="#MSTableValueError-__init__">__init__</a>(...)&nbsp;initializes&nbsp;x;&nbsp;see&nbsp;x.__class__.__doc__&nbsp;for&nbsp;signature</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="exceptions.html#AttributeError">exceptions.AttributeError</a>:<br>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object&gt;<dd><tt>T.<a href="#MSTableValueError-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+
+<hr>
+Methods inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><a name="MSTableValueError-__delattr__"><strong>__delattr__</strong></a>(...)</dt><dd><tt>x.<a href="#MSTableValueError-__delattr__">__delattr__</a>('name')&nbsp;&lt;==&gt;&nbsp;del&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="MSTableValueError-__getattribute__"><strong>__getattribute__</strong></a>(...)</dt><dd><tt>x.<a href="#MSTableValueError-__getattribute__">__getattribute__</a>('name')&nbsp;&lt;==&gt;&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="MSTableValueError-__getitem__"><strong>__getitem__</strong></a>(...)</dt><dd><tt>x.<a href="#MSTableValueError-__getitem__">__getitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="MSTableValueError-__getslice__"><strong>__getslice__</strong></a>(...)</dt><dd><tt>x.<a href="#MSTableValueError-__getslice__">__getslice__</a>(i,&nbsp;j)&nbsp;&lt;==&gt;&nbsp;x[i:j]<br>
+&nbsp;<br>
+Use&nbsp;of&nbsp;negative&nbsp;indices&nbsp;is&nbsp;not&nbsp;supported.</tt></dd></dl>
+
+<dl><dt><a name="MSTableValueError-__reduce__"><strong>__reduce__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="MSTableValueError-__repr__"><strong>__repr__</strong></a>(...)</dt><dd><tt>x.<a href="#MSTableValueError-__repr__">__repr__</a>()&nbsp;&lt;==&gt;&nbsp;repr(x)</tt></dd></dl>
+
+<dl><dt><a name="MSTableValueError-__setattr__"><strong>__setattr__</strong></a>(...)</dt><dd><tt>x.<a href="#MSTableValueError-__setattr__">__setattr__</a>('name',&nbsp;value)&nbsp;&lt;==&gt;&nbsp;x.name&nbsp;=&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="MSTableValueError-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="MSTableValueError-__str__"><strong>__str__</strong></a>(...)</dt><dd><tt>x.<a href="#MSTableValueError-__str__">__str__</a>()&nbsp;&lt;==&gt;&nbsp;str(x)</tt></dd></dl>
+
+<dl><dt><a name="MSTableValueError-__unicode__"><strong>__unicode__</strong></a>(...)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+<dl><dt><strong>message</strong></dt>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__author__</strong> = 'k.r. anderson, &lt;ken.anderson@ubc.ca&gt;'<br>
+<strong>__version__</strong> = ''<br>
+<strong>__version_date__</strong> = ''<br>
+<strong>directionKeys</strong> = ['FIELD:REFERENCE_DIR', 'FIELD:PHASE_DIR']<br>
+<strong>frequencyFields</strong> = ['SPECTRAL_WINDOW:REF_FREQUENCY', 'SPECTRAL_WINDOW:EFFECTIVE_BW', 'SPECTRAL_WINDOW:TOTAL_BANDWIDTH', 'SPECTRAL_WINDOW:CHAN_WIDTH', 'SPECTRAL_WINDOW:CHAN_FREQ', 'SPECTRAL_WINDOW:RESOLUTION']<br>
+<strong>frequencyReference</strong> = ['REST', 'LSRK', 'LSRD', 'BARY', 'GEO', 'TOPO', 'GALACTO', 'LGROUP', 'CMB']<br>
+<strong>orderedTableNamesAsKeys</strong> = ['OBSERVATION', 'DATA_DESCRIPTION', 'POLARIZATION', 'SPECTRAL_WINDOW', 'FIELD', 'ANTENNA']<br>
+<strong>pkg_name</strong> = 'metaData'<br>
+<strong>polarizationKeys</strong> = ['POLARIZATION:CORR_TYPE']<br>
+<strong>referenceFields</strong> = ['SPECTRAL_WINDOW:MEAS_FREQ_REF']<br>
+<strong>tableIncludes</strong> = {'ANTENNA': ['NAME', 'STATION', 'DISH_DIAMETER', 'POSITION', 'TYPE'], 'DATA_DESCRIPTION': ['SPECTRAL_WINDOW_ID', 'POLARIZATION_ID'], 'FIELD': ['NAME', 'TIME', 'SOURCE_ID', 'REFERENCE_DIR', 'PHASE_DIR'], 'OBSERVATION': ['PROJECT', 'OBSERVER', 'TELESCOPE_NAME', 'TIME_RANGE'], 'POLARIZATION': ['CORR_TYPE'], 'SPECTRAL_WINDOW': ['NUM_CHAN', 'NAME', 'REF_FREQUENCY', 'TOTAL_BANDWIDTH', 'MEAS_FREQ_REF', 'CHAN_FREQ', 'CHAN_WIDTH', 'EFFECTIVE_BW', 'RESOLUTION']}<br>
+<strong>timeKeys</strong> = ['FIELD:TIME']<br>
+<strong>version</strong> = '0.3.0'</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#7799ee">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Author</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#7799ee"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">k.r.&nbsp;anderson,&nbsp;&lt;ken.anderson@ubc.ca&gt;</td></tr></table>
+</body></html>

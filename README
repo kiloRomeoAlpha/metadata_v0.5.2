@@ -1,0 +1,158 @@
+
+                metaData, Version 0.5.2
+		-----------------------
+		   The CyberSKA Project
+		          K.R. Anderson
+		             2012-12-12
+
+
+Introduction
+------------
+The metaData package extracts metadata from several astronomical data formats
+and produces a FITS-like flat header file. Data formats handled by this
+package currently include
+
+	FITS images
+	UV FITS files
+	CASA Tables images (Casa Images)
+	CASA Tables Visibility Measurement Sets (MS)
+
+The package includes facilities for determined the CyberSKA MIME type of one
+of the above data format types. These MIME types, while not strictly IANA
+defined types, have been defined by CyberSKA and currently are
+
+	image/fits-image (FITS image)
+	image/fits-uvw	 (UV FITS)
+	image/ms-image	 (Casa Image)
+	image/ms-uvw	 (MS Visibility)
+
+
+The package requires the installation of two third party packages,
+
+    pyfits
+    pyrap
+
+which provide python interfaces to the cfitsio and casacore libraries,
+respectively. This implies that these libraries are also required.
+
+Passed FITS datasets *must* be single files.  Casa Images and UV Measurement
+Sets can be either directory names or tar archives, either gzipped or
+not. Due to the database nature of CASA Tables, the metaData packages *must*
+extract all contents in their entirety.
+
+
+Interfaces
+----------
+1) Command line interface
+The metaData package provides a command line interface, called 'extract',
+which will accept the name of a single dataset name, whether a single file
+like FITS, or a set of database tables like a CASA Tables dataset. The usage
+provided at the command line can be viewed by calling --help or simply
+returning the 'extract' command.
+
+I.e.
+
+    $ metaData/extract --help
+
+	Usage: extract [--help] [--verbose] <FITSfile or ms_dir>
+
+	where <FITSfile or ms_dir> is the name of a FITS file,
+	a Casa Image or Visibility Measurement Set, 
+	either as a tar archive or gzip tar archive.
+
+The extract tool will run completely silently without the --verbose flag. In
+verbose mode, users can expect to see something like,
+
+eg., 
+     $ metaData/extract --verbose $DQS/DATASETS/cenacontinuum.fits
+
+
+			This is metaData, v0.5.2
+			------------------------
+
+	Operating on /srv/cyberska/DQS/DATASETS/cenacontinuum.fits
+
+	Testing for tar ...
+
+	tarfile test is False
+
+	Check for FITS type.
+
+	#################################################
+	#########  FITS MimeType Notification  ##########
+	#################################################
+
+	Received file: /srv/cyberska/DQS/DATASETS/cenacontinuum.fits
+	Data Type Confirmed:  Image
+	____________________ 
+
+	MIME-Version: 1.0
+	Content-Type: image/fits
+	Content-Disposition: filename=cenacontinuum.fits;
+			     parse-date="2012-12-12T23:58:17Z";
+	____________________ 
+
+
+	Got a FITS mimetype: image/fits
+
+	calling run functional on /srv/cyberska/DQS/DATASETS/cenacontinuum.fits , image/fits
+	Wrote header to file:  /srv/cyberska/DQS/DATASETS/cenacontinuum.fits.hdr
+
+
+2) API
+Programmatically, extraction of metaData and header file writing can be
+performed by instatiating objects from the classes appropriate to the dataset
+in question and then calling the available public methods.
+
+Eg.
+	The extract.py module provides an typical usage of these classes and
+method calls.
+
+A) A UV Measurement Set
+
+   handler = msHandlers.MSHandlers(inFileName)
+   handler.parseMS("image/ms-uvw")
+   handler.buildFlatMeta()
+   fileWrite = handler.writeHdr(fileName)
+
+B) A Casa Image
+
+   handler = casaImageHandlers.CasaImageHandlers(inFileName)
+   handler.parseImage("image/ms-image")
+   fileWrite = handler.writeHdr(fileName)
+
+C) A FITS Image
+
+   handler = fitsHandlers.FitsHandlers(inFileName)
+   handler.parseFits("image/fits-image")
+   fileWrite = handler.writeHdr()
+
+D) A UVFITS dataset
+
+   handler = fitsHandlers.FitsHandlers(inFileName)
+   handler.parseFits("image/fits-uvw")
+   fileWrite = handler.writeHdr()
+
+
+The returned "fileWrite" is a string object, which is the name of the
+written header file. Users can pass a "fileName" to the writeHdr() method in
+the first two cases, in which the returned name will be that + '.hdr' appended
+to the name. This cannot be done for FITS datasets, and the written header
+file will be the input dataset name + ".hdr".
+
+Note: Readers will notice the degeneracy of the FitsHandlers class in that it
+is called for both FITS images and UVFITS files. (For more detail on all
+methods in these classes, see the API documentation found in "docs/" of the
+metaData package).
+
+Future work:
+-----------
+       -- remove argument passing in the vairous "parse" methods. There is
+          really no need for this, and is a remnant of earlier versions.
+
+       -- allow a file name as an argument to be passed to the FITS writeHdr()
+          method and make it consistent with the other class method interfaces.
+
+
+
+

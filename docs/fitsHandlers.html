@@ -1,0 +1,103 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module fitsHandlers</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>fitsHandlers</strong></big></big> (version )</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/srv/cyberska/kenneth/sw/metaData/fitsHandlers.py">/srv/cyberska/kenneth/sw/metaData/fitsHandlers.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CyberSKA&nbsp;CASA&nbsp;Metadata&nbsp;Project<br>
+#<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;metaData.fitsHandlers.py<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kenneth&nbsp;Anderson,&nbsp;2011-09<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ken.anderson@ubc.ca<br>
+#&nbsp;------------------------------------------------------------------------------</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="pyfits.html">pyfits</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="fitsHandlers.html#FitsHandlers">FitsHandlers</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="FitsHandlers">class <strong>FitsHandlers</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Though&nbsp;much&nbsp;simpler&nbsp;than&nbsp;either&nbsp;the&nbsp;CasaImageHandlers&nbsp;or&nbsp;MSHandlers<br>
+classes,&nbsp;the&nbsp;<a href="#FitsHandlers">FitsHandlers</a>&nbsp;class&nbsp;as&nbsp;been&nbsp;implemented&nbsp;as&nbsp;below&nbsp;to&nbsp;parallel<br>
+the&nbsp;method&nbsp;calls&nbsp;of&nbsp;those&nbsp;classes.<br>
+&nbsp;<br>
+i.e.&nbsp;<br>
+&nbsp;<br>
+//&nbsp;constructor<br>
+fho&nbsp;=&nbsp;<a href="#FitsHandlers">FitsHandlers</a>(fitsFile)<br>
+fho.<a href="#FitsHandlers-parseFits">parseFits</a>(&lt;mimeType&gt;)<br>
+fho.<a href="#FitsHandlers-writeHdr">writeHdr</a>()<br>
+&nbsp;<br>
+The&nbsp;writeHdr&nbsp;method&nbsp;will&nbsp;write&nbsp;a&nbsp;file&nbsp;equal&nbsp;to&nbsp;the&nbsp;input&nbsp;filename&nbsp;with<br>
+an&nbsp;appended&nbsp;'.hdr'&nbsp;extension.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="FitsHandlers-__init__"><strong>__init__</strong></a>(self, fitsFile)</dt><dd><tt>Constructor&nbsp;receives&nbsp;a&nbsp;fitsfile&nbsp;name&nbsp;&lt;string&gt;.&nbsp;Does&nbsp;not&nbsp;support<br>
+tarred&nbsp;or&nbsp;gzipped&nbsp;files.</tt></dd></dl>
+
+<dl><dt><a name="FitsHandlers-parseFits"><strong>parseFits</strong></a>(self, mimeType)</dt><dd><tt>Caller&nbsp;passes&nbsp;the&nbsp;predetermined&nbsp;mime-type&nbsp;&lt;string&gt;&nbsp;of&nbsp;the&nbsp;file.<br>
+In&nbsp;the&nbsp;case&nbsp;of&nbsp;FITS,&nbsp;this&nbsp;will&nbsp;either&nbsp;be,<br>
+&nbsp;<br>
+'image/fits-image'&nbsp;&nbsp;or,<br>
+'image/fits-uvw'</tt></dd></dl>
+
+<dl><dt><a name="FitsHandlers-render"><strong>render</strong></a>(self)</dt><dd><tt>To&nbsp;stdout.</tt></dd></dl>
+
+<dl><dt><a name="FitsHandlers-writeHdr"><strong>writeHdr</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__author__</strong> = 'k.r. anderson, &lt;ken.anderson@ubc.ca&gt;'<br>
+<strong>__version__</strong> = ''<br>
+<strong>__version_date__</strong> = ''<br>
+<strong>pkg_name</strong> = 'metaData'<br>
+<strong>version</strong> = '0.3.0'</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#7799ee">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Author</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#7799ee"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">k.r.&nbsp;anderson,&nbsp;&lt;ken.anderson@ubc.ca&gt;</td></tr></table>
+</body></html>

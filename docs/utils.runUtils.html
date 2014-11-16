@@ -1,0 +1,162 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module utils.runUtils</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="utils.html"><font color="#ffffff">utils</font></a>.runUtils</strong></big></big> (version )</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/srv/cyberska/kenneth/sw/metaData/utils/runUtils.py">/srv/cyberska/kenneth/sw/metaData/utils/runUtils.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CyberSKA&nbsp;CASA&nbsp;Metadata&nbsp;Project<br>
+#<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;metaData.utils.runUtils.py<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kenneth&nbsp;Anderson,&nbsp;2011-08<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ken.anderson@ubc.ca<br>
+#&nbsp;------------------------------------------------------------------------------</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="getopt.html">getopt</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="time.html">time</a><br>
+</td><td width="25%" valign=top><a href="types.html">types</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-decdeg2dms"><strong>decdeg2dms</strong></a>(dd)</dt><dd><tt>Caller&nbsp;passes&nbsp;decimal&nbsp;degrees&nbsp;of&nbsp;type&nbsp;&lt;float&gt;.<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;3-tuple,&nbsp;all&nbsp;type&nbsp;&lt;float&gt;:<br>
+&nbsp;<br>
+(degrees,&nbsp;minutes,&nbsp;seconds)</tt></dd></dl>
+ <dl><dt><a name="-decdeg2dmsString"><strong>decdeg2dmsString</strong></a>(ddegrees)</dt><dd><tt>Caller&nbsp;passes&nbsp;decimal&nbsp;degree&nbsp;of&nbsp;type&nbsp;&lt;float&gt;.<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;&lt;string&gt;&nbsp;of&nbsp;the&nbsp;form<br>
+&nbsp;<br>
+'d[dd].mm.ss.sss...'<br>
+&nbsp;<br>
+Note:&nbsp;A&nbsp;kludge&nbsp;is&nbsp;introduced&nbsp;here&nbsp;in&nbsp;order&nbsp;to&nbsp;deal&nbsp;with&nbsp;imprecision<br>
+in&nbsp;stored&nbsp;coordinate&nbsp;conversion&nbsp;values.&nbsp;&nbsp;Seconds&nbsp;are&nbsp;set&nbsp;to&nbsp;zero&nbsp;when&nbsp;a&nbsp;seconds<br>
+value&nbsp;is&nbsp;less&nbsp;than&nbsp;1&nbsp;milli-arcsecond,&nbsp;(0.001).&nbsp;&nbsp;Such&nbsp;small&nbsp;fractions<br>
+of&nbsp;a&nbsp;second&nbsp;appear&nbsp;to&nbsp;result&nbsp;from&nbsp;original&nbsp;pointing&nbsp;directions&nbsp;(so&nbsp;far&nbsp;seen&nbsp;only&nbsp;in<br>
+simulated&nbsp;data)&nbsp;specified&nbsp;as&nbsp;an&nbsp;exact&nbsp;number&nbsp;of&nbsp;degrees,&nbsp;eg.&nbsp;28.0,&nbsp;which&nbsp;is&nbsp;then&nbsp;<br>
+converted&nbsp;and&nbsp;stored&nbsp;in&nbsp;the&nbsp;resulting&nbsp;Measurement&nbsp;Set&nbsp;as&nbsp;radians.&nbsp;&nbsp;The&nbsp;precision&nbsp;of<br>
+this&nbsp;converted&nbsp;value&nbsp;as&nbsp;stored&nbsp;in&nbsp;the&nbsp;MS&nbsp;is&nbsp;insufficient&nbsp;to&nbsp;re-render&nbsp;the&nbsp;original<br>
+float&nbsp;value&nbsp;of&nbsp;28.0&nbsp;degrees.<br>
+&nbsp;<br>
+Eg.,&nbsp;&nbsp;simulated&nbsp;VLA&nbsp;beam&nbsp;data,&nbsp;VLA_sim_beam5.MS,<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;FIELD:REFERENCE_DIR[0]<br>
+array([[7.27220522e-05,&nbsp;4.88692191e-01]])<br>
+&nbsp;<br>
+where&nbsp;dec&nbsp;is&nbsp;second&nbsp;item&nbsp;of&nbsp;the&nbsp;array,&nbsp;i.e.&nbsp;<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;FIELD:REFERENCE_DIR[0][0][1]<br>
+0.4886921905584124<br>
+&nbsp;<br>
+This&nbsp;converts&nbsp;to&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dec&nbsp;=&nbsp;+28&nbsp;degrees,&nbsp;0&nbsp;minutes,&nbsp;2.910383304567e-11&nbsp;seconds<br>
+&nbsp;<br>
+It&nbsp;appears&nbsp;highly&nbsp;unlikely&nbsp;that&nbsp;this&nbsp;was&nbsp;the&nbsp;original&nbsp;requested&nbsp;pointing.<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;will&nbsp;return&nbsp;the&nbsp;&lt;string&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'+28.0.0.0'</tt></dd></dl>
+ <dl><dt><a name="-decdeg2hms"><strong>decdeg2hms</strong></a>(dd)</dt><dd><tt>Caller&nbsp;passes&nbsp;decimal&nbsp;degrees&nbsp;of&nbsp;type&nbsp;&lt;float&gt;.<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;3-tuple,&nbsp;&nbsp;all&nbsp;type&nbsp;&lt;float&gt;:<br>
+&nbsp;<br>
+(hours,&nbsp;minutes,&nbsp;seconds).</tt></dd></dl>
+ <dl><dt><a name="-decdeg2hmsString"><strong>decdeg2hmsString</strong></a>(ddegrees)</dt><dd><tt>Caller&nbsp;passes&nbsp;decimal&nbsp;degrees&nbsp;of&nbsp;type&nbsp;&lt;float&gt;.<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;&lt;string&gt;&nbsp;of&nbsp;the&nbsp;form<br>
+&nbsp;<br>
+'HH:mm:ss.ssss...'<br>
+&nbsp;<br>
+Note:&nbsp;See&nbsp;previous&nbsp;note&nbsp;for&nbsp;the&nbsp;function,&nbsp;<a href="#-decdeg2dmsString">decdeg2dmsString</a>().</tt></dd></dl>
+ <dl><dt><a name="-degrees"><strong>degrees</strong></a>(...)</dt><dd><tt><a href="#-degrees">degrees</a>(x)<br>
+&nbsp;<br>
+Convert&nbsp;angle&nbsp;x&nbsp;from&nbsp;radians&nbsp;to&nbsp;degrees.</tt></dd></dl>
+ <dl><dt><a name="-delist"><strong>delist</strong></a>(sentList)</dt><dd><tt>Caller&nbsp;passes&nbsp;an&nbsp;iterable,&nbsp;comprising&nbsp;elements&nbsp;of&nbsp;any&nbsp;type,<br>
+Returns&nbsp;a&nbsp;concantentated&nbsp;csv&nbsp;string&nbsp;of&nbsp;all&nbsp;iterated&nbsp;elements.</tt></dd></dl>
+ <dl><dt><a name="-handleCLargs"><strong>handleCLargs</strong></a>(args)</dt></dl>
+ <dl><dt><a name="-isoDateTime"><strong>isoDateTime</strong></a>(mjdSecs)</dt><dd><tt>Caller&nbsp;passes&nbsp;MJD&nbsp;in&nbsp;seconds.&nbsp;Passed&nbsp;object&nbsp;can&nbsp;be&nbsp;of&nbsp;type<br>
+&lt;float&gt;&nbsp;or&nbsp;&lt;string&gt;.<br>
+&nbsp;<br>
+Returns&nbsp;an&nbsp;ISO&nbsp;8601&nbsp;Date-Time&nbsp;string.<br>
+&nbsp;<br>
+return&nbsp;&lt;string&gt;<br>
+&nbsp;<br>
+MJD&nbsp;of&nbsp;Unix&nbsp;epoch&nbsp;1970-01-01T00:00:00.0&nbsp;=&nbsp;40587.0<br>
+&nbsp;<br>
+In&nbsp;seconds,<br>
+&nbsp;<br>
+40587*86400&nbsp;=&nbsp;3506716800s<br>
+&nbsp;<br>
+The&nbsp;ValueError&nbsp;exception&nbsp;trapped&nbsp;here&nbsp;will&nbsp;likely&nbsp;be&nbsp;due<br>
+to&nbsp;times&nbsp;of&nbsp;zero&nbsp;being&nbsp;passed&nbsp;to&nbsp;this&nbsp;function.&nbsp;&nbsp;Indeed,<br>
+anytime&nbsp;&lt;&nbsp;epochDelta&nbsp;will&nbsp;throw&nbsp;that&nbsp;exception&nbsp;on&nbsp;the&nbsp;<br>
+strftime()&nbsp;call.</tt></dd></dl>
+ <dl><dt><a name="-polarizationConvert"><strong>polarizationConvert</strong></a>(corrTypeArray)</dt></dl>
+ <dl><dt><a name="-ptime"><strong>ptime</strong></a>()</dt></dl>
+ <dl><dt><a name="-raDecConvert"><strong>raDecConvert</strong></a>(directionPair)</dt><dd><tt>Caller&nbsp;passes&nbsp;a&nbsp;Casa&nbsp;Image&nbsp;buried&nbsp;array&nbsp;RA-Dec&nbsp;pair.<br>
+&nbsp;<br>
+eg.,&nbsp;metaDict['FIELD:REFERENCE_DIR']<br>
+...<br>
+array([[&nbsp;1.40134576,&nbsp;&nbsp;0.29041328]])<br>
+array([[&nbsp;1.49066296,&nbsp;-0.09943254]])<br>
+array([[&nbsp;1.46225308,&nbsp;-0.09471353]])<br>
+...<br>
+&nbsp;<br>
+Returns&nbsp;tuple-like&nbsp;&lt;string&gt;.</tt></dd></dl>
+ <dl><dt><a name="-redirectStdOut"><strong>redirectStdOut</strong></a>(logger<font color="#909090">=None</font>)</dt><dd><tt>Redirect&nbsp;stdout&nbsp;to&nbsp;a&nbsp;logger&nbsp;object,&nbsp;if&nbsp;passed.<br>
+If&nbsp;a&nbsp;logger&nbsp;object&nbsp;is&nbsp;not&nbsp;passed,&nbsp;redirection&nbsp;is&nbsp;to&nbsp;/dev/null.<br>
+A&nbsp;logger&nbsp;object&nbsp;must&nbsp;be&nbsp;a&nbsp;file&nbsp;like&nbsp;object&nbsp;with&nbsp;a&nbsp;write&nbsp;method.<br>
+Preferably,&nbsp;logger&nbsp;is&nbsp;a&nbsp;configured&nbsp;logging&nbsp;instance.</tt></dd></dl>
+ <dl><dt><a name="-resetStdOut"><strong>resetStdOut</strong></a>(fsock, saveStdOut)</dt><dd><tt>Resets&nbsp;sys.stdout&nbsp;to&nbsp;the&nbsp;passed&nbsp;file&nbsp;object,&nbsp;saveStdOut.<br>
+This&nbsp;object&nbsp;should&nbsp;be&nbsp;the&nbsp;original&nbsp;sys.stdout&nbsp;file&nbsp;object.<br>
+fsock&nbsp;is&nbsp;an&nbsp;opened&nbsp;file&nbsp;object&nbsp;that&nbsp;is&nbsp;acting&nbsp;as&nbsp;stdout.</tt></dd></dl>
+ <dl><dt><a name="-stringify"><strong>stringify</strong></a>(thing)</dt><dd><tt>Caller&nbsp;passes&nbsp;an&nbsp;object.&nbsp;Passed&nbsp;object&nbsp;handled<br>
+here&nbsp;can&nbsp;be&nbsp;one&nbsp;of<br>
+&nbsp;<br>
+&lt;string&gt;<br>
+&lt;integer&gt;<br>
+&lt;float&gt;<br>
+&lt;list&gt;<br>
+&lt;ndarray&gt;<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;string&nbsp;build&nbsp;from&nbsp;&nbsp;a&nbsp;passed&nbsp;data&nbsp;type.&nbsp;Iterables<br>
+are&nbsp;concatentated&nbsp;via&nbsp;the&nbsp;<a href="#-delist">delist</a>()&nbsp;function.</tt></dd></dl>
+ <dl><dt><a name="-usage"><strong>usage</strong></a>(mod)</dt></dl>
+ <dl><dt><a name="-vtranslate"><strong>vtranslate</strong></a>(velocityIndex)</dt><dd><tt>Caller&nbsp;passes&nbsp;a&nbsp;'velType'&nbsp;index&nbsp;of&nbsp;type&nbsp;&lt;int&gt;,<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;&lt;string&gt;&nbsp;of&nbsp;the&nbsp;Velocity&nbsp;Type.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__author__</strong> = 'K.R. Anderson, &lt;k.r.anderson@ubc.ca&gt;'<br>
+<strong>__version__</strong> = ''<br>
+<strong>__version_date__</strong> = ''<br>
+<strong>casaStokesTypes</strong> = ['I', 'Q', 'U', 'V', 'RR', 'RL', 'LR', 'LL', 'XX', 'XY', 'YX', 'YY', 'RX', 'RY', 'LX', 'LY', 'XR', 'XL', 'YR', 'YL', ...]<br>
+<strong>velocityType</strong> = ['RADIO', 'OPTICAL', 'RATIO', 'TRUE', 'GAMMA']</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#7799ee">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Author</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#7799ee"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">K.R.&nbsp;Anderson,&nbsp;&lt;k.r.anderson@ubc.ca&gt;</td></tr></table>
+</body></html>
